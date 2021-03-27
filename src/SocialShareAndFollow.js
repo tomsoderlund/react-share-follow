@@ -45,7 +45,7 @@ const SocialShareAndFollow = ({
           .map(serviceId => (
             <IconButton
               key={serviceId}
-              title={serviceId}
+              title={capitalizeFirstLetter(serviceId)}
               onClick={e => handleShare(serviceId)}
             >
               {services[serviceId].icon || serviceId}
@@ -61,7 +61,7 @@ const SocialShareAndFollow = ({
           .map(serviceId => (
             <IconButton
               key={serviceId}
-              title={serviceId}
+              title={capitalizeFirstLetter(serviceId)}
               onClick={e => handleFollow(serviceId, follow[serviceId])}
             >
               {services[serviceId].icon || serviceId}
@@ -179,6 +179,7 @@ const IconButton = ({ children, ...props }) => (
 )
 
 const queryObjectToString = queryObject => Object.keys(queryObject).reduce((result, key) => (queryObject[key] === undefined) ? result : result + (result.length ? '&' : '?') + key + '=' + window.encodeURIComponent(queryObject[key]), '')
+const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1)
 
 const ShareIcon = () => (
   <svg height='20' viewBox='0 0 20 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
