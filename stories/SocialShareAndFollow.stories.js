@@ -30,6 +30,7 @@ export const normalUse = () => {
       description='My description'
       labelShare='Share this article'
       labelFollow='Follow me for more cool stuff'
+      iconColor='darkturquoise'
       share={{
         copy: true,
         email: true,
