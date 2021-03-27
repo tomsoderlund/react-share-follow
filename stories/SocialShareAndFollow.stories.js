@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 // import { linkTo } from '@storybook/addon-links' // linkTo('Button')
-import backgrounds from '@storybook/addon-backgrounds'
+// import backgrounds from '@storybook/addon-backgrounds'
 
 import SocialShareAndFollow from '../src/SocialShareAndFollow'
 import '../src/SocialShareAndFollow.css'
