@@ -1,5 +1,79 @@
 import React from 'react'
 
+const SocialShareAndFollow = ({
+  url,
+  title,
+  description,
+  hashtags,
+
+  whatShare = 'this page',
+  whyFollow = 'for more articles',
+
+  share = {
+    copy: true,
+    email: true,
+    sms: false,
+    facebook: true,
+    twitter: true,
+    reddit: false,
+    pinterest: false,
+    linkedin: true
+  },
+
+  follow = {},
+
+  onShare,
+  onFollow
+}) => {
+  const handleShare = (service) => {
+    const sharedUrl = services[service].shareUrl(url || window.location.href, { title, description, onShare })
+    sharedUrl !== false && window.open(sharedUrl, '_blank')
+  }
+
+  const handleFollow = (service, username) => {
+    const followedUrl = services[service].followUrl(username, { title, description, onFollow })
+    followedUrl !== false && window.open(followedUrl, '_blank')
+  }
+
+  return (
+    <div className='social-share-and-follow'>
+      <div className='button-row share'>
+        <span><ShareIcon /></span>
+        <span>{['Share', whatShare].join(' ')}:</span>
+        {Object.keys(services)
+          .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
+          .map(serviceId => (
+            <IconButton
+              key={serviceId}
+              title={serviceId}
+              onClick={e => handleShare(serviceId)}
+            >
+              {services[serviceId].icon || serviceId}
+            </IconButton>
+          ))}
+      </div>
+
+      <div className='button-row follow'>
+        <span><FollowIcon /></span>
+        <span>{['Follow', whyFollow].join(' ')}:</span>
+        {Object.keys(services)
+          .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
+          .map(serviceId => (
+            <IconButton
+              key={serviceId}
+              title={serviceId}
+              onClick={e => handleFollow(serviceId, follow[serviceId])}
+            >
+              {services[serviceId].icon || serviceId}
+            </IconButton>
+          ))}
+      </div>
+
+    </div>
+  )
+}
+export default SocialShareAndFollow
+
 const services = {
   copy: {
     icon: (
@@ -89,80 +163,6 @@ const services = {
     followUrl: (username) => `https://www.linkedin.com/${username.includes('/') ? username : `company/${username}`}`
   }
 }
-
-const SocialShareAndFollow = ({
-  url,
-  title,
-  description,
-  hashtags,
-
-  whatShare = 'this page',
-  whyFollow = 'for more articles',
-
-  share = {
-    copy: true,
-    email: true,
-    sms: false,
-    facebook: true,
-    twitter: true,
-    reddit: false,
-    pinterest: false,
-    linkedin: true
-  },
-
-  follow = {},
-
-  onShare,
-  onFollow
-}) => {
-  const handleShare = (service) => {
-    const sharedUrl = services[service].shareUrl(url || window.location.href, { title, description, onShare })
-    sharedUrl !== false && window.open(sharedUrl, '_blank')
-  }
-
-  const handleFollow = (service, username) => {
-    const followedUrl = services[service].followUrl(username, { title, description, onFollow })
-    followedUrl !== false && window.open(followedUrl, '_blank')
-  }
-
-  return (
-    <div className='social-share-and-follow'>
-      <div className='button-row share'>
-        <span><ShareIcon /></span>
-        <span>{['Share', whatShare].join(' ')}:</span>
-        {Object.keys(services)
-          .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
-          .map(serviceId => (
-            <IconButton
-              key={serviceId}
-              title={serviceId}
-              onClick={e => handleShare(serviceId)}
-            >
-              {services[serviceId].icon || serviceId}
-            </IconButton>
-          ))}
-      </div>
-
-      <div className='button-row follow'>
-        <span><FollowIcon /></span>
-        <span>{['Follow', whyFollow].join(' ')}:</span>
-        {Object.keys(services)
-          .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
-          .map(serviceId => (
-            <IconButton
-              key={serviceId}
-              title={serviceId}
-              onClick={e => handleFollow(serviceId, follow[serviceId])}
-            >
-              {services[serviceId].icon || serviceId}
-            </IconButton>
-          ))}
-      </div>
-
-    </div>
-  )
-}
-export default SocialShareAndFollow
 
 const IconButton = ({ children, ...props }) => (
   <button className='icon-button' {...props}>
