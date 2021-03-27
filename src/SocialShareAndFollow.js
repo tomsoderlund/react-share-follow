@@ -39,37 +39,41 @@ const SocialShareAndFollow = ({
 
   return (
     <div className='social-share-and-follow'>
-      <div className='button-row share'>
-        <span><ShareIcon color={iconColor} /></span>
-        {labelShare && <span>{labelShare}:</span>}
-        {Object.keys(services)
-          .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
-          .map(serviceId => (
-            <IconButton
-              key={serviceId}
-              title={capitalizeFirstLetter(serviceId)}
-              onClick={e => handleShare(serviceId)}
-            >
-              {services[serviceId].icon({ color: iconColor }) || serviceId}
-            </IconButton>
-          ))}
-      </div>
+      {Object.keys(share).length > 0 && (
+        <div className='button-row share'>
+          <span><ShareIcon color={iconColor} /></span>
+          {labelShare && <span>{labelShare}:</span>}
+          {Object.keys(services)
+            .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
+            .map(serviceId => (
+              <IconButton
+                key={serviceId}
+                title={capitalizeFirstLetter(serviceId)}
+                onClick={e => handleShare(serviceId)}
+              >
+                {services[serviceId].icon({ color: iconColor }) || serviceId}
+              </IconButton>
+            ))}
+        </div>
+      )}
 
-      <div className='button-row follow'>
-        <span><FollowIcon color={iconColor} /></span>
-        {labelFollow && <span>{labelFollow}:</span>}
-        {Object.keys(services)
-          .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
-          .map(serviceId => (
-            <IconButton
-              key={serviceId}
-              title={capitalizeFirstLetter(serviceId)}
-              onClick={e => handleFollow(serviceId, follow[serviceId])}
-            >
-              {services[serviceId].icon({ color: iconColor }) || serviceId}
-            </IconButton>
-          ))}
-      </div>
+      {Object.keys(follow).length > 0 && (
+        <div className='button-row follow'>
+          <span><FollowIcon color={iconColor} /></span>
+          {labelFollow && <span>{labelFollow}:</span>}
+          {Object.keys(services)
+            .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
+            .map(serviceId => (
+              <IconButton
+                key={serviceId}
+                title={capitalizeFirstLetter(serviceId)}
+                onClick={e => handleFollow(serviceId, follow[serviceId])}
+              >
+                {services[serviceId].icon({ color: iconColor }) || serviceId}
+              </IconButton>
+            ))}
+        </div>
+      )}
 
     </div>
   )
