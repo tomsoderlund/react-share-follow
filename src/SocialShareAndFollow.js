@@ -6,8 +6,8 @@ const SocialShareAndFollow = ({
   description,
   hashtags,
 
-  whatShare = 'this page',
-  whyFollow = 'for more articles',
+  labelShare = 'Share',
+  labelFollow = 'Follow',
 
   share = {
     copy: true,
@@ -39,7 +39,7 @@ const SocialShareAndFollow = ({
     <div className='social-share-and-follow'>
       <div className='button-row share'>
         <span><ShareIcon /></span>
-        <span>{['Share', whatShare].join(' ')}:</span>
+        {labelShare && <span>{labelShare}:</span>}
         {Object.keys(services)
           .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
           .map(serviceId => (
@@ -55,7 +55,7 @@ const SocialShareAndFollow = ({
 
       <div className='button-row follow'>
         <span><FollowIcon /></span>
-        <span>{['Follow', whyFollow].join(' ')}:</span>
+        {labelFollow && <span>{labelFollow}:</span>}
         {Object.keys(services)
           .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
           .map(serviceId => (

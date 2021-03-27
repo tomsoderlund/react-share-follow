@@ -27,8 +27,8 @@ export const normalUse = () => {
     <SocialShareAndFollow
       title='My title'
       description='My description'
-      whatShare='this article'
-      whyFollow='me for more cool stuff'
+      labelShare='Share this article'
+      labelFollow='Follow me for more cool stuff'
       follow={{
         email: signupEmailFunction,
         twitter: 'tomsoderlund',
