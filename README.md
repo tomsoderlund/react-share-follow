@@ -16,6 +16,7 @@
     import 'node_modules/react-share-follow/dist/SocialShareAndFollow.css'
     
     <SocialShareAndFollow
+      url={'https://www.mysite.com/'}
       title='My title'
       description='My description'
       labelShare='Share this article'
@@ -38,5 +39,5 @@
         instagram: 'tomsoderlund',
         linkedin: 'in/tomsoderlund'
       }}
-      onShare={({ message }) => action('onShare')(message, 'success')}
+      onShare={({ message }) => window.alert(message)}
     />
