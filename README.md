@@ -41,3 +41,7 @@
       }}
       onShare={({ message }) => window.alert(message)}
     />
+
+## How to build and publish a new NPM package
+
+    yarn publish  # yarn prepare (Babel) will be run automatically
