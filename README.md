@@ -1,6 +1,6 @@
 # React Social Share & Follow
 
-**React component for Share and Follow on social networks**
+**A beautiful React component for Share and Follow on social networks**
 
 ## Example
 
@@ -13,7 +13,7 @@
 ## Syntax
 
     import { SocialShareAndFollow } from 'react-share-follow'
-    import 'node_modules/react-share-follow/dist/SocialShareAndFollow.css'
+    import 'react-share-follow/dist/SocialShareAndFollow.css'
     
     <SocialShareAndFollow
       url={'https://www.mysite.com/'}
@@ -33,7 +33,7 @@
         linkedin: true
       }}
       follow={{
-        email: signupEmailFunction,
+        email: () => window.prompt('Customize this action to collect email'),
         web: 'https://www.tomsoderlund.com/',
         twitter: 'tomsoderlund',
         instagram: 'tomsoderlund',

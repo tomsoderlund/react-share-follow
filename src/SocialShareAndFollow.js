@@ -9,6 +9,7 @@ const SocialShareAndFollow = ({
   labelShare = 'Share',
   labelFollow = 'Follow',
 
+  showCategoryIcons = true,
   iconColor = 'black',
 
   share = {
@@ -41,7 +42,7 @@ const SocialShareAndFollow = ({
     <div className='social-share-and-follow'>
       {Object.keys(share).length > 0 && (
         <div className={['button-row', 'share', ...(Object.keys(follow).length === 0 ? ['share-only'] : [])].join(' ')}>
-          <span><ShareIcon color={iconColor} /></span>
+          {showCategoryIcons && <span><ShareIcon color={iconColor} /></span>}
           {labelShare && <span>{labelShare}:</span>}
           {Object.keys(services)
             .filter(serviceId => share[serviceId] && services[serviceId].shareUrl)
@@ -59,7 +60,7 @@ const SocialShareAndFollow = ({
 
       {Object.keys(follow).length > 0 && (
         <div className={['button-row', 'follow', ...(Object.keys(share).length === 0 ? ['follow-only'] : [])].join(' ')}>
-          <span><FollowIcon color={iconColor} /></span>
+          {showCategoryIcons && <span><FollowIcon color={iconColor} /></span>}
           {labelFollow && <span>{labelFollow}:</span>}
           {Object.keys(services)
             .filter(serviceId => follow[serviceId] && services[serviceId].followUrl)
@@ -179,7 +180,7 @@ const services = {
 }
 
 const IconButton = ({ children, ...props }) => (
-  <button className='icon-button' {...props}>
+  <button className='icon-button no-button' {...props}>
     {children}
   </button>
 )
