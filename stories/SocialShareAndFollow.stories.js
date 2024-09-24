@@ -26,27 +26,30 @@ export const noProps = () => {
 export const normalUse = () => {
   return (
     <SocialShareAndFollow
-      title='My title'
-      description='My description'
+      title='My short title'
+      description='My long description of what this is about'
       labelShare='Share this article'
       labelFollow='Follow me for more cool stuff'
-      iconColor='darkturquoise'
+      iconColor='rebeccapurple'
       share={{
         copy: true,
         email: true,
-        sms: false,
+        sms: true,
         facebook: true,
-        twitter: true,
-        reddit: false,
+        linkedin: true,
         pinterest: true,
-        linkedin: true
+        reddit: true,
+        threads: true,
+        twitter: true
       }}
       follow={{
         email: signupEmailFunction,
         web: 'https://www.tomsoderlund.com/',
-        twitter: 'tomsoderlund',
         instagram: 'tomsoderlund',
-        linkedin: 'in/tomsoderlund'
+        linkedin: 'in/tomsoderlund',
+        threads: 'tomsoderlund',
+        tiktok: 'tomsoderlund',
+        twitter: 'tomsoderlund'
       }}
       onShare={({ message }) => action('onShare')(message, 'success')}
     />
