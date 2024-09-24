@@ -16,28 +16,32 @@
     import 'react-share-follow/dist/SocialShareAndFollow.css'
     
     <SocialShareAndFollow
-      url={'https://www.mysite.com/'}
+      url='https://www.mysite.com/'
       title='My title'
       description='My description'
       labelShare='Share this article'
       labelFollow='Follow me for more cool stuff'
       iconColor='black'
+      buttonColor='lightgray'
       share={{
         copy: true,
         email: true,
-        sms: false,
+        sms: true,
         facebook: true,
-        twitter: true,
-        reddit: false,
+        linkedin: true,
         pinterest: true,
-        linkedin: true
+        reddit: true,
+        threads: true,
+        twitter: true
       }}
       follow={{
         email: () => window.prompt('Customize this action to collect email'),
         web: 'https://www.tomsoderlund.com/',
-        twitter: 'tomsoderlund',
         instagram: 'tomsoderlund',
-        linkedin: 'in/tomsoderlund'
+        linkedin: 'in/tomsoderlund',
+        threads: 'tomsoderlund',
+        tiktok: 'tomsoderlund',
+        twitter: 'tomsoderlund'
       }}
       onShare={({ message }) => window.alert(message)}
     />

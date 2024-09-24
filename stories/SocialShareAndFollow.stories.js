@@ -31,6 +31,7 @@ export const normalUse = () => {
       labelShare='Share this article'
       labelFollow='Follow me for more cool stuff'
       iconColor='rebeccapurple'
+      buttonColor='lightblue'
       share={{
         copy: true,
         email: true,

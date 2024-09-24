@@ -11,6 +11,7 @@ const SocialShareAndFollow = ({
 
   showCategoryIcons = true,
   iconColor = 'black',
+  buttonColor, //= 'lightblue',
 
   share = {
     copy: true,
@@ -50,7 +51,9 @@ const SocialShareAndFollow = ({
               <IconButton
                 key={serviceId}
                 title={capitalizeFirstLetter(serviceId)}
-                onClick={e => handleShare(serviceId)}
+                onClick={(e) => handleShare(serviceId)}
+                buttonColor={buttonColor}
+                iconColor={iconColor}
               >
                 {services[serviceId].icon({ color: iconColor }) || serviceId}
               </IconButton>
@@ -68,7 +71,9 @@ const SocialShareAndFollow = ({
               <IconButton
                 key={serviceId}
                 title={capitalizeFirstLetter(serviceId)}
-                onClick={e => handleFollow(serviceId, follow[serviceId])}
+                onClick={(e) => handleFollow(serviceId, follow[serviceId])}
+                buttonColor={buttonColor}
+                iconColor={iconColor}
               >
                 {services[serviceId].icon({ color: iconColor }) || serviceId}
               </IconButton>
@@ -198,8 +203,19 @@ const services = {
   }
 }
 
-const IconButton = ({ children, ...props }) => (
-  <button className='icon-button no-button' {...props}>
+const IconButton = ({ children, buttonColor, iconColor, ...otherProps }) => (
+  <button
+    className='icon-button no-button'
+    {...otherProps}
+    style={{
+      ...(buttonColor
+        ? { backgroundColor: buttonColor }
+        : {}),
+      ...(iconColor
+        ? { borderColor: iconColor }
+        : {})
+    }}
+  >
     {children}
   </button>
 )
