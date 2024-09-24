@@ -4,6 +4,10 @@
   "description": "React component for Share and Follow on social networks",
   "author": "Tom Söderlund <tom@tomsoderlund.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomsoderlund/react-share-follow"
+  },
   "scripts": {
     "dev": "yarn storybook",
     "new": "touch src/New.js; touch src/New.css; touch stories/New.stories.js; echo ADD NEW COMPONENT HERE >> src/index.js; echo Created component New.js, to rename do:; echo mv src/New.js src/MyComponent.js; echo mv src/New.css src/MyComponent.css; echo mv stories/New.stories.js stories/MyComponent.stories.js; echo ALSO update index.js",
